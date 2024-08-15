@@ -50,6 +50,11 @@ export function create_question(question, content_container) {
     navigate_button.append(prev_button,next_button);
 
 
+    add_answer.addEventListener("click", () => {
+        
+    });
+
+
 
     content_container.append(survey_question_content_area, question_type,question_button, navigate_button); 
 }

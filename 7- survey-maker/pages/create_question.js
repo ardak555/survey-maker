@@ -13,7 +13,6 @@ export function create_question(question, content_container) {
 
     const question_input = document.createElement("input");
     question_input.classList.add("question_input");
-    question_input.placeholder = "Soruyu girin";
     survey_question_content_area.append(survey_question_name, question_input);
 
     const question_type = document.createElement("select");
@@ -27,7 +26,7 @@ export function create_question(question, content_container) {
     });
 
     const question_button = document.createElement("div");
-    question_button.classList.add("question_button");
+    question_button.classList.add("question_button"); 
 
     const add_answer = document.createElement("div");
     add_answer.classList.add("add_answer");
@@ -37,7 +36,20 @@ export function create_question(question, content_container) {
     add_question.textContent = "Soru Ekle";
     question_button.append(add_answer,add_question);
 
-    
+    const navigate_button = document.createElement("div");
+    navigate_button.classList.add("navigate_button");
 
-    content_container.append(survey_question_content_area, question_type,question_button); 
+    const next_button = document.createElement("div");
+    next_button.classList.add("next_button");
+    next_button.textContent = "İleri";
+
+    const prev_button = document.createElement("div");
+    prev_button.classList.add("prev_button");
+    prev_button.textContent = "Geri";
+
+    navigate_button.append(prev_button,next_button);
+
+
+
+    content_container.append(survey_question_content_area, question_type,question_button, navigate_button); 
 }

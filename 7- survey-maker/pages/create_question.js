@@ -50,6 +50,7 @@ export function create_question(question, content_container) {
 
     const popup_background = document.createElement("div");
     popup_background.classList.add("popup_background");
+    popup_background.style.display = "none"; // Başlangıçta gizli
 
     const popup_content = document.createElement("div");
     popup_content.classList.add("popup_content");
@@ -68,14 +69,11 @@ export function create_question(question, content_container) {
     popup_answer_input.textContent = "Cevapları eklemek için + butonuna tıklayın";
 
     const maxInputs = 10; // Maksimum input sayısı
-    let currentInputCount = 2; // Başlangıçta ekranda olacak input sayısı (isteğe bağlı olarak değiştirilebilir)
+    let currentInputCount = 2; // Başlangıçta ekranda olacak input sayısı
 
     const answer_area = document.createElement("div");
     answer_area.classList.add("answer_area");
 
-    
-
-    // Cevapların eklenmesi için uygun bir container oluşturalım
     const answerContainer = document.createElement("div");
     answerContainer.classList.add("answer_container");
 
@@ -84,32 +82,64 @@ export function create_question(question, content_container) {
         const newInput = document.createElement("input");
         newInput.type = "text";
         newInput.classList.add("popup_answer_input_field");
-
         answerContainer.appendChild(newInput);
     }
 
     const popup_answer_add = document.createElement("div");
     popup_answer_add.classList.add("popup_answer_add");
-    popup_answer_add.textContent = "+";
+
+    const add_button = document.createElement("div");
+    add_button.classList.add("add_button");
+    add_button.textContent = "+";
+
+    popup_answer_add.appendChild(add_button);
 
     popup_answer_add.addEventListener("click", () => {
         if (currentInputCount < maxInputs) {
             const newInput = document.createElement("input");
             newInput.type = "text";
             newInput.classList.add("popup_answer_input_field");
-
             answerContainer.appendChild(newInput);
             currentInputCount++;
         } else {
             alert("Maksimum 10 cevap şıkkı ekleyebilirsiniz");
         }
     });
-    answer_area.append(answerContainer,popup_answer_add)
+
+    const popup_save_button = document.createElement("div");
+    popup_save_button.classList.add("popup_save_button");
+
+    const save_button = document.createElement("div");
+    save_button.classList.add("save_button");
+    save_button.textContent = "OK";
+
+    popup_save_button.appendChild(save_button);
+    answer_area.append(answerContainer, popup_answer_add);
     popup_answer_content.append(popup_answer_input, answer_area);
-    popup_content.append(popup_content_header, popup_answer_content);
+    popup_content.append(popup_content_header, popup_answer_content, popup_save_button);
+
+    save_button.addEventListener("click", () => {
+        const answers = [];
+        const inputs = answerContainer.querySelectorAll(".popup_answer_input_field");
+        let allFilled = true; // Tüm inputların dolu olup olmadığını kontrol etmek için
+    
+        inputs.forEach(input => {
+            if (input.value.trim() === "") { // Input boş ise
+                allFilled = false;
+            }
+            answers.push(input.value);
+        });
+    
+        if (!allFilled) {
+            alert("Cevap kısmı boş bırakılamaz");
+        } else {
+            console.log(answers); // Cevapları konsola yazdır
+            popup_background.style.display = "none"; // Popup'u gizle
+        }
+    });
 
     add_answer.addEventListener("click", () => {
-        // Burada popup_background görünür hale getirilebilir.
+        popup_background.style.display = "flex"; // Popup'u görünür hale getir
     });
 
     content_container.append(survey_question_content_area, question_type, question_button, navigate_button, popup_background);

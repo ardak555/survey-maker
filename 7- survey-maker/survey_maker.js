@@ -145,7 +145,7 @@ body {
 }
 
 .popup_background{
-    display: flex;
+    display: none;
     justify-content:center;
     align-items: center;
     height:100vh;
@@ -182,11 +182,13 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    align-content: center;
     justify-content: center;
-    height: fit-content;
+    height: min-content;
     width: 100%;
     padding: .2em;
+    max-height: 20vh;
+    overflow-y: auto;
+    scrollbar-width: none;
 }
 
 .answer_area{
@@ -203,6 +205,35 @@ body {
     border-radius: 5px;
     background: var(--coice-color);
     padding: 0.3em;
+}
+
+.popup_answer_add{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--coice-color);
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    text-align: center;
+    color: var(--content-color);
+    background: var(--coice-color);
+}
+
+.popup_save_button{
+    display: flex;
+    flex-direction: row-reverse;
+    padding: .5em;
+    color: var(--content-color);
+}
+
+.save_button{
+    border: 1px solid var(--coice-color);
+    padding:.3em;
+    width:4em;
+    text-align:center;
+    background: var(--coice-color);
+    border-radius: 5px;
 }
 `;
 document.head.append(survey_style);

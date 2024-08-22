@@ -17,6 +17,8 @@ survey_style.innerHTML = `
     --shadow-color:#28314E;
     --text-input-color: #28314E4d;
     --chosen-color-shadow: #2A314D4d;
+    --popup-bg-color:#667588c2;
+    --popup-content-color:#28314E;
 }
 
 body {
@@ -140,6 +142,67 @@ body {
     background: var(--button-color);
     color: white;
     text-align: center;
+}
+
+.popup_background{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    height:100vh;
+    width: 100%;
+    position:absolute;
+    top:0;
+    left:0;
+    background: var(--popup-bg-color);
+}
+
+.popup_content{
+    height:50vh;
+    width:45vw;
+    background:var(--popup-content-color);
+    border-radius:5px;
+    display:flex;
+    flex-direction: column;
+}
+
+.popup_content_header{
+    color: var(--content-color);
+    font-size: 2em;
+    font-weight: 600;
+    padding:.4em;
+}
+
+.popup_answer_input{
+    padding: .3em 0.4em;
+    color: var(--background-color);
+}
+
+.answer_container{
+    gap: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    height: fit-content;
+    width: 100%;
+    padding: .2em;
+}
+
+.answer_area{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+.popup_answer_input_field{
+    width: 60%;
+    height: 1.3em;
+    border: none;
+    border-radius: 5px;
+    background: var(--coice-color);
+    padding: 0.3em;
 }
 `;
 document.head.append(survey_style);

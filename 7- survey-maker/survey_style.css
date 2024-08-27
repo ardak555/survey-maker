@@ -64,7 +64,6 @@ body {
     border-radius: 10px;
     background-color: var(--content-color);
     box-shadow: 2px 3px 110px var(--shadow-color);
-    justify-content: space-evenly;
 }
 
 .header_container{
@@ -240,5 +239,18 @@ body {
     text-align:center;
     background: var(--coice-color);
     border-radius: 5px;
+}
+
+.all_question_header{
+    font-size: 2em;
+    font-weight: 600;
+}
+
+.all_question_list{
+    height:50vh ;
+}
+
+.all_question_list_order{
+    max-height: 50vh;
 }
 

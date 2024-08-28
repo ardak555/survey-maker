@@ -149,6 +149,15 @@ export function create_question(question, content_container) {
             popup_background.style.display = "flex";
         });
 
+        // Soru tipine göre "Cevap Ekle" butonunu gizleme veya gösterme
+        question_type.addEventListener("change", () => {
+            if (question_type.value === "text_question" || question_type.value === "score") {
+                add_answer.style.display = "none";
+            } else {
+                add_answer.style.display = "block";
+            }
+        });
+
         add_question.addEventListener("click", () => {
             const currentQuestion = {
                 questionText: question_input.value,
@@ -157,20 +166,19 @@ export function create_question(question, content_container) {
                     .map(input => input.value)
                     .filter(answer => answer.trim() !== "") // Boş cevapları filtrele
             };
-        
+
             if (currentQuestion.questionText.trim() === "" || currentQuestion.questionType === "Soru Tipini Seçin") {
                 alert("Lütfen soru metnini ve soru tipini doldurunuz.");
-            } else if (currentQuestion.answers.length === 0) {
+            } else if (currentQuestion.answers.length === 0 && currentQuestion.questionType !== "text_question" && currentQuestion.questionType !== "score") {
                 alert("Lütfen en az bir cevap ekleyiniz.");
             } else {
                 questionsArray.push(currentQuestion);
                 console.log(questionsArray);
-        
+
                 content_container.innerHTML = "";
                 createSurveyQuestion();
             }
         });
-        
 
         next_button.addEventListener("click", () => {
             if (questionsArray.length === 0) {
@@ -178,7 +186,7 @@ export function create_question(question, content_container) {
             } else {
                 // Son eklenen soruyu kontrol edin
                 const lastQuestion = questionsArray[questionsArray.length - 1];
-                if (lastQuestion.questionText.trim() === "" || lastQuestion.answers.length === 0) {
+                if (lastQuestion.questionText.trim() === "" || (lastQuestion.answers.length === 0 && lastQuestion.questionType !== "text_question" && lastQuestion.questionType !== "score")) {
                     alert("Lütfen son eklenen sorunun metnini ve cevaplarını doldurun.");
                 } else {
                     content_container.innerHTML = "";
@@ -188,7 +196,6 @@ export function create_question(question, content_container) {
                 }
             }
         });
-        
 
         newPage.append(survey_question_content_area, question_type, question_button, navigate_button, popup_background);
         content_container.appendChild(newPage);

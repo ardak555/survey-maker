@@ -316,3 +316,11 @@ _
     align-content: center;
     align-items: center;
 }
+
+.survey_all_question_page{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}

@@ -182,7 +182,7 @@ export function create_question(question, content_container) {
                     alert("Lütfen son eklenen sorunun metnini ve cevaplarını doldurun.");
                 } else {
                     content_container.innerHTML = "";
-                    show_question(content_container);
+                    show_question(content_container, questionsArray);
                     content_container.classList.remove("question_content_container");
                     content_container.classList.add("show_question_content_container");
                 }

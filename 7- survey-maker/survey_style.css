@@ -57,7 +57,6 @@ body {
     padding: 1em;
     display: flex;
     flex-direction: column;
-    align-items: center;
     border: 1px solid var(--content-color);
     height: 80vh;
     width: 40vw;
@@ -248,9 +247,72 @@ body {
 
 .all_question_list{
     height:50vh ;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
 }
 
 .all_question_list_order{
     max-height: 50vh;
 }
 
+.all_question_list_dropdown{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.dropdown_button{
+    height: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    background: var(--chosen-color);
+    color: white;
+}
+
+.dropdown_button_icon{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.open_arrow img , .close_arrow img {
+    height: 1.7em;
+    color: var(--content-color);
+}
+
+.open_arrow{
+    position: absolute;
+}
+
+.close_arrow{
+    display: none;
+}
+
+.dropdown_content{
+    max-height: 10em;
+    background-color: var(--chosen-color-shadow);
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    color: var(--content-color);
+    padding: .4em;
+}
+
+
+.question_info,.question_type_info,.answer_item_group{
+    background: var(--popup-content-color);
+    padding: .4em;
+    border-radius: 5px;
+    margin:.3em;
+}
+_
+.survey_all_question_page{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
